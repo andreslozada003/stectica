@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\NewPasswordController;
 use App\Http\Controllers\PasswordResetLinkController;
 use App\Http\Controllers\WhatsAppWebhookController;
@@ -36,4 +37,9 @@ Route::middleware('auth')->group(function (): void {
     Route::get('/agenda/disponibilidad', [AgendaController::class, 'availability'])->name('agenda.availability');
     Route::post('/agenda/citas', [AgendaController::class, 'store'])->name('agenda.store');
     Route::patch('/agenda/citas/{appointment}/estado', [AgendaController::class, 'updateStatus'])->name('agenda.status');
+
+    Route::resource('pacientes', PatientController::class)->except(['edit', 'destroy']);
+    Route::patch('/pacientes/{patient}/historia-clinica', [PatientController::class, 'updateClinical'])->name('patients.clinical.update');
+    Route::post('/pacientes/{patient}/notas', [PatientController::class, 'storeNote'])->name('patients.notes.store');
+    Route::post('/pacientes/{patient}/pagos', [PatientController::class, 'storePayment'])->name('patients.payments.store');
 });

@@ -15,5 +15,15 @@ class Patient extends Model
 
     protected $guarded = [];
 
+    protected function casts(): array
+    {
+        return ['birth_date' => 'date'];
+    }
+
     public function appointments(): HasMany { return $this->hasMany(Appointment::class); }
+    public function notes(): HasMany { return $this->hasMany(PatientNote::class); }
+    public function payments(): HasMany { return $this->hasMany(PatientPayment::class); }
+    public function photos(): HasMany { return $this->hasMany(PatientPhoto::class); }
+
+    public function getFullNameAttribute(): string { return trim("{$this->first_name} {$this->last_name}"); }
 }

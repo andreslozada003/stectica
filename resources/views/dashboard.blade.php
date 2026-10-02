@@ -40,7 +40,7 @@
             <div class="section-label">Principal</div>
             <a href="#" class="active"><span class="nav-icon">⌂</span><span>Panel general</span></a>
             <a href="{{ route('agenda.index') }}"><span class="nav-icon">◫</span><span>Agenda y citas</span></a>
-            <a href="#"><span class="nav-icon">♙</span><span>Pacientes</span></a>
+            <a href="{{ route('pacientes.index') }}"><span class="nav-icon">♙</span><span>Pacientes</span></a>
             <div class="section-label">Gestión clínica</div>
             <a href="#"><span class="nav-icon">✦</span><span>Tratamientos</span></a>
             <a href="#"><span class="nav-icon">▧</span><span>Consentimientos</span></a>
@@ -70,7 +70,7 @@
                 <div class="card stock"><div class="card-head"><h2>Alertas de inventario</h2><a href="#" class="link">Ver todo</a></div><div class="stock-item"><div><b>Ácido hialurónico 1 ml</b><span>Vence: 18 Oct 2026</span></div><div class="level low">2 unidades</div></div><div class="stock-item"><div><b>Guantes de nitrilo M</b><span>Stock mínimo: 10 cajas</span></div><div class="level low">6 cajas</div></div><div class="stock-item"><div><b>Protector solar FPS 50</b><span>Producto cosmetológico</span></div><div class="level">18 unidades</div></div></div>
             </div>
         </section>
-        <section class="quick"><a href="#"><i>＋</i>Registrar paciente</a><a href="#"><i>✦</i>Nueva sesión</a><a href="#"><i>$</i>Registrar pago</a></section>
+        <section class="quick"><a href="{{ route('pacientes.create') }}"><i>＋</i>Registrar paciente</a><a href="#"><i>✦</i>Nueva sesión</a><a href="#"><i>$</i>Registrar pago</a></section>
     </main>
 </div>
 </body>
