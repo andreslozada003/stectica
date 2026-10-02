@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
+        if (! Schema::hasTable('products')) Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('sku')->unique();
             $table->string('name');
@@ -24,7 +24,7 @@ return new class extends Migration {
             $table->id();
             $table->foreignId('patient_id')->constrained()->restrictOnDelete();
             $table->foreignId('appointment_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignId('treatment_catalog_id')->constrained()->restrictOnDelete();
+            $table->foreignId('treatment_catalog_id')->constrained('treatment_catalog')->restrictOnDelete();
             $table->foreignId('performed_by')->constrained('users')->restrictOnDelete();
             $table->unsignedInteger('session_number')->default(1);
             $table->text('clinical_notes')->nullable();
